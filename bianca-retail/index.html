@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Bianca Bright - Retail Partner Presentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --coral: #E3523B;
+            --peach: #FFA680;
+            --cream: #FFEDD6;
+            --charcoal: #1d1d1d;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fff;
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Password Screen */
+        .password-screen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fff 0%, rgba(255,237,214,0.3) 50%, #fff 100%);
+            padding: 24px;
+        }
+
+        .password-container {
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .password-logo {
+            max-width: 200px;
+            margin-bottom: 32px;
+        }
+
+        .password-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .password-subtitle {
+            color: rgba(29,29,29,0.6);
+            margin-bottom: 32px;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 16px 24px;
+            border: 2px solid rgba(255,166,128,0.4);
+            border-radius: 12px;
+            font-size: 1rem;
+            text-align: center;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .password-input:focus {
+            border-color: var(--coral);
+        }
+
+        .password-input.error {
+            border-color: #e53e3e;
+        }
+
+        .password-error {
+            color: #e53e3e;
+            font-size: 0.875rem;
+            margin-top: 12px;
+            display: none;
+        }
+
+        .password-error.show {
+            display: block;
+        }
+
+        .password-button {
+            width: 100%;
+            margin-top: 24px;
+            padding: 16px;
+            background: var(--coral);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .password-button:hover {
+            background: #c9452f;
+        }
+
+        /* Presentation */
+        .presentation {
+            display: none;
+        }
+
+        .presentation.active {
+            display: block;
+        }
+
+        .slide {
+            min-height: 100vh;
+            display: none;
+            padding: 80px 32px;
+        }
+
+        .slide.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid rgba(255,166,128,0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            z-index: 100;
+        }
+
+        .nav-arrow:hover {
+            border-color: rgba(255,166,128,0.6);
+            background: rgba(255,237,214,0.3);
+        }
+
+        .nav-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .nav-arrow.prev { left: 24px; }
+        .nav-arrow.next { right: 24px; }
+
+        .nav-arrow svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--peach);
+        }
+
+        /* Progress */
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--cream);
+            z-index: 100;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--coral), var(--peach));
+            transition: width 0.3s;
+        }
+
+        .progress-dots {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(29,29,29,0.2);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .progress-dot.active {
+            width: 32px;
+            background: var(--coral);
+        }
+
+        .progress-dot:hover {
+            background: rgba(255,166,128,0.5);
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 32px;
+            right: 24px;
+            color: rgba(29,29,29,0.3);
+            font-size: 0.875rem;
+            z-index: 100;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            opacity: 0.3;
+            z-index: 100;
+        }
+
+        .watermark img {
+            height: 20px;
+        }
+
+        /* Typography */
+        .label {
+            color: var(--peach);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.75rem;
+            margin-bottom: 16px;
+        }
+
+        h1, h2 {
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.5rem; font-weight: 500; }
+
+        .highlight { color: var(--peach); }
+        .coral { color: var(--coral); }
+
+        /* Grid layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 48px;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+            .slide { padding: 100px 24px; }
+        }
+
+        /* Cards */
+        .card {
+            background: #fff;
+            border: 1px solid rgba(255,166,128,0.2);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .card-gradient {
+            background: linear-gradient(135deg, rgba(255,237,214,0.5) 0%, #fff 100%);
+        }
+
+        /* Product images */
+        .product-image {
+            aspect-ratio: 1;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Stats */
+        .stat {
+            text-align: center;
+            padding: 32px;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--peach);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+        }
+
+        .stat-desc {
+            color: rgba(29,29,29,0.5);
+            font-size: 0.875rem;
+        }
+
+        /* Feature icons */
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(255,166,128,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .feature-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--peach);
+        }
+
+        /* Tables */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .pricing-table th {
+            background: rgba(255,237,214,0.5);
+            padding: 20px;
+            text-align: left;
+            font-weight: 500;
+            color: var(--peach);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+        }
+
+        .pricing-table th:not(:first-child) {
+            text-align: center;
+        }
+
+        .pricing-table td {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255,237,214,0.5);
+        }
+
+        .pricing-table td:not(:first-child) {
+            text-align: center;
+            color: rgba(29,29,29,0.7);
+        }
+
+        .pricing-table td:last-child {
+            color: var(--coral);
+            font-weight: 600;
+        }
+
+        .pricing-table tr:hover {
+            background: rgba(255,237,214,0.2);
+        }
+
+        /* Checkmark list */
+        .check-list {
+            list-style: none;
+        }
+
+        .check-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .check-list .check {
+            color: var(--peach);
+        }
+
+        /* Slide-specific backgrounds */
+        .slide-cream {
+            background: rgba(255,237,214,0.3);
+        }
+
+        .slide-gradient {
+            background: linear-gradient(135deg, #fff 0%, rgba(255,166,128,0.1) 50%, #fff 100%);
+        }
+
+        /* Contact card */
+        .contact-card {
+            background: linear-gradient(135deg, rgba(255,237,214,0.5) 0%, rgba(255,166,128,0.2) 100%);
+            border: 1px solid rgba(255,166,128,0.3);
+            border-radius: 16px;
+            padding: 48px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .contact-name {
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-bottom: 4px;
+        }
+
+        .contact-phone {
+            color: rgba(29,29,29,0.7);
+        }
+
+        .contact-email {
+            color: rgba(29,29,29,0.5);
+            font-size: 0.875rem;
+        }
+
+        /* Text utilities */
+        .text-center { text-align: center; }
+        .text-muted { color: rgba(29,29,29,0.6); }
+        .text-sm { font-size: 0.875rem; }
+        .text-lg { font-size: 1.125rem; }
+        .text-xl { font-size: 1.25rem; }
+        .italic { font-style: italic; }
+        .mb-4 { margin-bottom: 16px; }
+        .mb-8 { margin-bottom: 32px; }
+        .mb-12 { margin-bottom: 48px; }
+
+        /* Press logos */
+        .press-logos {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .press-logo {
+            font-family: Georgia, serif;
+            font-size: 1.5rem;
+            color: rgba(29,29,29,0.3);
+            transition: color 0.2s;
+        }
+
+        .press-logo:hover {
+            color: var(--peach);
+        }
+
+        /* Problem cards */
+        .problem-card {
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid #fed7d7;
+            background: #fff5f5;
+            text-align: center;
+        }
+
+        .problem-x {
+            color: #e53e3e;
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        /* Solution cards */
+        .solution-card {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(255,166,128,0.15) 0%, rgba(255,166,128,0.1) 100%);
+            border: 1px solid rgba(255,166,128,0.3);
+            border-radius: 16px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+
+        .solution-card:hover {
+            border-color: rgba(255,166,128,0.5);
+        }
+
+        .solution-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255,166,128,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .solution-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--peach);
+        }
+
+        /* Glow effects */
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(150px);
+            pointer-events: none;
+        }
+
+        .glow-peach {
+            background: rgba(255,166,128,0.2);
+        }
+
+        .glow-cream {
+            background: rgba(255,237,214,0.5);
+        }
+
+        /* Bianca specific brand elements */
+        .brand-number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255,166,128,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--peach);
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .brand-feature {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .brand-feature h4 {
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .brand-feature p {
+            color: rgba(29,29,29,0.5);
+            font-size: 0.875rem;
+        }
+
+        /* Product listing */
+        .product-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            background: rgba(255,237,214,0.3);
+            border: 1px solid rgba(255,166,128,0.2);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .product-row:hover {
+            border-color: rgba(255,166,128,0.4);
+        }
+
+        .product-row-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .product-row-thumb {
+            width: 64px;
+            height: 64px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .product-row-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-row h4 {
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .product-row p {
+            color: rgba(29,29,29,0.5);
+            font-size: 0.875rem;
+        }
+
+        .product-row-price {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--coral);
+        }
+
+        /* LED product cards */
+        .led-card {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255,166,128,0.2);
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .led-card.featured {
+            border: 2px solid rgba(255,166,128,0.4);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .led-card-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--coral);
+            color: #fff;
+            font-size: 0.625rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .led-card-image {
+            aspect-ratio: 16/9;
+            position: relative;
+        }
+
+        .led-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .led-card-body {
+            padding: 32px;
+        }
+
+        .led-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .led-card-title {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+
+        .led-card-subtitle {
+            color: rgba(29,29,29,0.5);
+        }
+
+        .led-card-price {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--coral);
+        }
+
+        /* Tags */
+        .tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            background: var(--cream);
+            color: rgba(29,29,29,0.7);
+            border-radius: 4px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        /* Info boxes */
+        .info-box {
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,166,128,0.2);
+            background: rgba(255,237,214,0.3);
+        }
+
+        .info-box-label {
+            color: var(--peach);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+        }
+
+        .info-box-value {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 4px;
+        }
+
+        .info-box-desc {
+            color: rgba(29,29,29,0.5);
+            font-size: 0.875rem;
+        }
+
+        /* Quote */
+        .quote {
+            font-style: italic;
+            color: rgba(29,29,29,0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Password Screen -->
+    <div class="password-screen" id="passwordScreen">
+        <div class="password-container">
+            <img src="../bianca-logos/Logo bianca1.png" alt="bianca" class="password-logo">
+            <h1 class="password-title">Retail Partner Presentation</h1>
+            <p class="password-subtitle">Please enter the access code to continue</p>
+            <form id="passwordForm">
+                <input type="password" id="passwordInput" class="password-input" placeholder="Access Code" autocomplete="off">
+                <p class="password-error" id="passwordError">Invalid access code</p>
+                <button type="submit" class="password-button">Enter</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Presentation -->
+    <div class="presentation" id="presentation">
+        <!-- Watermark -->
+        <div class="watermark">
+            <img src="../bianca-logos/Logo bianca1.png" alt="bianca">
+        </div>
+
+        <!-- Navigation -->
+        <button class="nav-arrow prev" id="prevBtn">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <button class="nav-arrow next" id="nextBtn">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+        </button>
+
+        <!-- Progress -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-dots" id="progressDots"></div>
+        <div class="slide-counter" id="slideCounter"></div>
+
+        <!-- Slide 1: Title -->
+        <div class="slide active" data-slide="0">
+            <div class="slide-content">
+                <div class="grid-2">
+                    <div>
+                        <p class="label">Retail Partner Opportunity</p>
+                        <img src="../bianca-logos/Logo bianca1.png" alt="bianca" style="max-width: 300px; margin-bottom: 32px;">
+                        <p class="text-xl text-muted mb-4">The first food-grade teeth whitening gel. Something completely unique to the market.</p>
+                        <p class="text-muted mb-8">After 20+ years innovating in the industry, our founder saw what others ignored: microplastics, toxic ingredients, harsh chemicals. She knew there was a better way.</p>
+                        <p class="coral italic text-xl">You look super cute when you SMILE!</p>
+                    </div>
+                    <div class="product-image" style="max-width: 500px; margin: 0 auto;">
+                        <img src="https://biancabright.com/cdn/shop/files/premiumteethwhiteningdevice_1_35ba8291-6269-49bb-a52e-8aa0dd2f0701.jpg?v=1770108855" alt="bianca Pro Whitening Kit">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Story -->
+        <div class="slide slide-cream" data-slide="1">
+            <div class="slide-content text-center" style="max-width: 800px;">
+                <p class="label">Our Story</p>
+                <h2 class="mb-8">Two Decades of Innovation.<br><span class="highlight">One Mission.</span></h2>
+                <div class="text-muted text-lg" style="max-width: 700px; margin: 0 auto;">
+                    <p class="mb-4"><em>"As an innovator in the teeth whitening industry for over 20 years, I recognized that most products had bad ingredients in them—microplastics, toxic chemicals, harsh formulas that caused sensitivity."</em></p>
+                    <p class="mb-4">With decades of experience formulating both teeth whitening and beauty products, our founder knew there was potential to create something better: a <span class="coral" style="font-weight: 600;">clean, pure, yet effective formulation</span> that could disrupt the entire industry.</p>
+                    <p class="mb-4">So she went to work—developing the first food-grade teeth whitening gel. A formula so pure, so safe, it's unlike anything else on the market.</p>
+                    <p style="font-weight: 500; color: var(--charcoal);">This isn't just another whitening product. It's a completely new category—professional results with ingredients you can trust.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Innovation -->
+        <div class="slide slide-gradient" data-slide="2">
+            <div class="slide-content">
+                <div class="text-center mb-12">
+                    <p class="label">Beyond Formulation</p>
+                    <h2>Innovating the <span class="highlight">Technology Too</span></h2>
+                </div>
+                <div class="grid-2" style="max-width: 900px; margin: 0 auto;">
+                    <div class="card card-gradient">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </div>
+                        <h3 class="mb-4">Self-Sanitizing Case</h3>
+                        <p class="text-muted">Our newest wireless whitening device comes with an innovative self-sanitizing case—keeping your device clean and hygienic between uses without any extra effort.</p>
+                    </div>
+                    <div class="card card-gradient">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="mb-4">Lightweight Comfort</h3>
+                        <p class="text-muted">We recognized the need for a device that fits more comfortably in the mouth. Our lightweight design means you can whiten without the bulky, uncomfortable experience of traditional devices.</p>
+                    </div>
+                </div>
+                <p class="text-center quote mt-12">"I recognized the need for new technology—not just better ingredients."</p>
+            </div>
+        </div>
+
+        <!-- Slide 4: Brand -->
+        <div class="slide" data-slide="3">
+            <div class="slide-content">
+                <div class="grid-2">
+                    <div>
+                        <img src="../bianca-logos/Logo bianca1.png" alt="bianca" style="max-width: 180px; margin-bottom: 32px;">
+                        <h2 class="mb-8">"Beautiful Everyday"</h2>
+                        <p class="text-muted text-lg mb-8">Beautiful Everyday is not just our slogan—it's our promise. Inspired by the needs of our customers, our team has created the most safe, healthy, and truly effective whitening products on the market.</p>
+                        <div class="brand-feature">
+                            <div class="brand-number">01</div>
+                            <div>
+                                <h4>Dentist Founded</h4>
+                                <p>Created by industry pioneers</p>
+                            </div>
+                        </div>
+                        <div class="brand-feature">
+                            <div class="brand-number">02</div>
+                            <div>
+                                <h4>Food-Grade Formula</h4>
+                                <p>The only whitening gel pure enough to eat</p>
+                            </div>
+                        </div>
+                        <div class="brand-feature">
+                            <div class="brand-number">03</div>
+                            <div>
+                                <h4>Zero Sensitivity</h4>
+                                <p>Professional results without discomfort</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-image" style="max-width: 450px; margin: 0 auto;">
+                        <img src="https://biancabright.com/cdn/shop/files/Bianca_Bright_1.jpg?v=1767998743" alt="Confident smile">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Problem -->
+        <div class="slide slide-gradient" data-slide="4">
+            <div class="slide-content text-center">
+                <p class="label">The Opportunity</p>
+                <h2 class="mb-12">Everyone Wants a Whiter Smile</h2>
+                <div class="grid-2 mb-12" style="max-width: 800px; margin: 0 auto 48px;">
+                    <div class="card stat">
+                        <div class="stat-number">80%</div>
+                        <p class="stat-label">of adults want whiter teeth</p>
+                        <p class="stat-desc">Yet most solutions cause sensitivity or don't deliver</p>
+                    </div>
+                    <div class="card stat">
+                        <div class="stat-number">$7.4B</div>
+                        <p class="stat-label">global whitening market</p>
+                        <p class="stat-desc">Growing 6%+ annually</p>
+                    </div>
+                </div>
+                <div class="grid-3" style="max-width: 900px; margin: 0 auto;">
+                    <div class="problem-card">
+                        <div class="problem-x">✗</div>
+                        <p class="text-muted text-sm">Strips are messy and cause sensitivity</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-x">✗</div>
+                        <p class="text-muted text-sm">Professional treatments are expensive</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-x">✗</div>
+                        <p class="text-muted text-sm">Most products use harsh chemicals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Solution -->
+        <div class="slide" data-slide="5">
+            <div class="slide-content text-center">
+                <p class="label">The Solution</p>
+                <h2 class="mb-12">Professional Results. <span class="highlight">Zero Sensitivity.</span></h2>
+                <div class="grid-3" style="max-width: 900px; margin: 0 auto;">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <h3 class="mb-4">Food-Grade</h3>
+                        <p class="text-muted text-sm">The only whitening gel on the market pure enough to eat</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="mb-4">Fast Results</h3>
+                        <p class="text-muted text-sm">Visible whitening in as little as 7 days</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="mb-4">No Pain</h3>
+                        <p class="text-muted text-sm">Zero sensitivity formula for comfortable whitening</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Hero Products -->
+        <div class="slide slide-cream" data-slide="6">
+            <div class="slide-content text-center">
+                <p class="label">Product Line</p>
+                <h2 class="mb-4">Complete Whitening Ecosystem</h2>
+                <p class="text-muted mb-12">Professional-grade solutions for every need</p>
+                <div class="grid-4">
+                    <div>
+                        <div class="product-image mb-4" style="border: 1px solid rgba(255,166,128,0.2);">
+                            <img src="https://biancabright.com/cdn/shop/files/Bianca_Bright_1.jpg?v=1767998743" alt="Whitening Pens">
+                        </div>
+                        <h4>Whitening Pens</h4>
+                        <p class="coral">From $19</p>
+                    </div>
+                    <div>
+                        <div class="product-image mb-4" style="border: 1px solid rgba(255,166,128,0.2);">
+                            <img src="https://biancabright.com/cdn/shop/files/BiancaBright_11_0e518467-d962-45c8-990d-0b6a602cbd08.jpg?v=1770108465" alt="LED Kits">
+                        </div>
+                        <h4>LED Kits</h4>
+                        <p class="coral">From $59</p>
+                    </div>
+                    <div>
+                        <div class="product-image mb-4" style="border: 1px solid rgba(255,166,128,0.2);">
+                            <img src="https://biancabright.com/cdn/shop/files/BiancaBright_9_097d1451-665c-428b-b326-94111f3c2049.jpg?v=1770108281" alt="Oral Care">
+                        </div>
+                        <h4>Oral Care</h4>
+                        <p class="coral">From $79</p>
+                    </div>
+                    <div>
+                        <div class="product-image mb-4" style="border: 1px solid rgba(255,166,128,0.2);">
+                            <img src="https://biancabright.com/cdn/shop/files/naturalteethwhinteinggel.jpg?v=1769928193" alt="Gels & Serums">
+                        </div>
+                        <h4>Gels & Serums</h4>
+                        <p class="coral">$29</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Whitening Pens -->
+        <div class="slide" data-slide="7">
+            <div class="slide-content">
+                <div class="grid-2">
+                    <div class="product-image" style="max-width: 450px;">
+                        <img src="https://biancabright.com/cdn/shop/files/Bianca_Bright_1.jpg?v=1767998743" alt="Whitening Pen">
+                    </div>
+                    <div>
+                        <p class="label">Best Seller</p>
+                        <h2 class="mb-8">Whitening Pens</h2>
+                        <p class="text-muted text-lg mb-8">Convenient, effortless "anytime, anywhere" teeth whitening. Just turn the dial and brush the serum onto teeth twice a day.</p>
+                        <div class="product-row">
+                            <div class="product-row-info">
+                                <div class="product-row-thumb">
+                                    <img src="https://biancabright.com/cdn/shop/files/Bianca_Bright_1.jpg?v=1767998743" alt="Advanced Pen">
+                                </div>
+                                <div>
+                                    <h4>Advanced Whitening Pen</h4>
+                                    <p>30+ applications per pen</p>
+                                </div>
+                            </div>
+                            <div class="product-row-price">$19</div>
+                        </div>
+                        <div class="product-row">
+                            <div class="product-row-info">
+                                <div class="product-row-thumb">
+                                    <img src="https://biancabright.com/cdn/shop/files/TEETHWHITENINGPEN-1.jpg?v=1769805794" alt="Pure Pen">
+                                </div>
+                                <div>
+                                    <h4>Pure Whitening Pen</h4>
+                                    <p>Natural stain-lifting formula</p>
+                                </div>
+                            </div>
+                            <div class="product-row-price">$19.97</div>
+                        </div>
+                        <div style="display: flex; gap: 24px; flex-wrap: wrap; margin-top: 24px;">
+                            <span class="text-muted text-sm"><span class="highlight">✓</span> Pure ingredients</span>
+                            <span class="text-muted text-sm"><span class="highlight">✓</span> Results in days</span>
+                            <span class="text-muted text-sm"><span class="highlight">✓</span> Zero sensitivity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: LED Devices -->
+        <div class="slide slide-gradient" data-slide="8">
+            <div class="slide-content text-center">
+                <p class="label">Professional Grade</p>
+                <h2 class="mb-12">LED Whitening Devices</h2>
+                <div class="grid-2" style="max-width: 1000px; margin: 0 auto;">
+                    <div class="led-card">
+                        <div class="led-card-image">
+                            <img src="https://biancabright.com/cdn/shop/files/BiancaBright_11_0e518467-d962-45c8-990d-0b6a602cbd08.jpg?v=1770108465" alt="Essentials Kit">
+                        </div>
+                        <div class="led-card-body">
+                            <div class="led-card-header">
+                                <div>
+                                    <h3 class="led-card-title">Essentials Kit</h3>
+                                    <p class="led-card-subtitle">Wired LED + 3 Whitening Pens</p>
+                                </div>
+                                <div class="led-card-price">$59</div>
+                            </div>
+                            <ul class="check-list text-sm text-muted" style="text-align: left;">
+                                <li><span class="check">✓</span> 4-6 shades whiter in 10-14 days</li>
+                                <li><span class="check">✓</span> 90+ total applications</li>
+                                <li><span class="check">✓</span> Only 10 minutes per session</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="led-card featured" style="position: relative;">
+                        <div class="led-card-badge">Best Seller</div>
+                        <div class="led-card-image">
+                            <img src="https://biancabright.com/cdn/shop/files/premiumteethwhiteningdevice_1_35ba8291-6269-49bb-a52e-8aa0dd2f0701.jpg?v=1770108855" alt="Pro Wireless Kit">
+                        </div>
+                        <div class="led-card-body">
+                            <div class="led-card-header">
+                                <div>
+                                    <h3 class="led-card-title">Pro Whitening Kit Wireless</h3>
+                                    <p class="led-card-subtitle">Premium Cordless LED System</p>
+                                </div>
+                                <div class="led-card-price">$110</div>
+                            </div>
+                            <ul class="check-list text-sm text-muted" style="text-align: left;">
+                                <li><span class="check">✓</span> Wireless & rechargeable</li>
+                                <li><span class="check">✓</span> Professional-grade LED</li>
+                                <li><span class="check">✓</span> Portable charging case</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Oral Care -->
+        <div class="slide" data-slide="9">
+            <div class="slide-content text-center">
+                <p class="label">Daily Care</p>
+                <h2 class="mb-12">Oral Care Collection</h2>
+                <div class="grid-3">
+                    <div class="led-card">
+                        <div class="product-image">
+                            <img src="https://biancabright.com/cdn/shop/files/BiancaBright_9_097d1451-665c-428b-b326-94111f3c2049.jpg?v=1770108281" alt="Electric Toothbrush">
+                        </div>
+                        <div class="led-card-body" style="border-top: 1px solid var(--cream);">
+                            <div class="led-card-header">
+                                <h3 style="font-size: 1.25rem;">Electric LED Toothbrush</h3>
+                                <span class="coral text-xl">$79</span>
+                            </div>
+                            <p class="text-muted text-sm mb-4">40,000 vibrations/min with smart timer</p>
+                            <div><span class="tag">Multiple modes</span><span class="tag">USB charging</span></div>
+                        </div>
+                    </div>
+                    <div class="led-card">
+                        <div class="product-image">
+                            <img src="https://biancabright.com/cdn/shop/files/BiancaBright_7e1f28ab-4182-4bac-a070-d538b35ca351.jpg?v=1770108702" alt="Oscillating Toothbrush">
+                        </div>
+                        <div class="led-card-body" style="border-top: 1px solid var(--cream);">
+                            <div class="led-card-header">
+                                <h3 style="font-size: 1.25rem;">Oscillating Toothbrush</h3>
+                                <span class="coral text-xl">$97</span>
+                            </div>
+                            <p class="text-muted text-sm mb-4">4 precision modes, dentist-level clean</p>
+                            <div><span class="tag">4 modes</span><span class="tag">2 brush heads</span></div>
+                        </div>
+                    </div>
+                    <div class="led-card">
+                        <div class="product-image">
+                            <img src="https://biancabright.com/cdn/shop/files/naturalteethwhinteinggel.jpg?v=1769928193" alt="Max Whitening Gel">
+                        </div>
+                        <div class="led-card-body" style="border-top: 1px solid var(--cream);">
+                            <div class="led-card-header">
+                                <h3 style="font-size: 1.25rem;">Max Whitening Gel</h3>
+                                <span class="coral text-xl">$29</span>
+                            </div>
+                            <p class="text-muted text-sm mb-4">Whitening treatment while you brush</p>
+                            <div><span class="tag">Wintermint</span><span class="tag">Enamel safe</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Subscription -->
+        <div class="slide slide-gradient" data-slide="10">
+            <div class="slide-content">
+                <div class="grid-2">
+                    <div>
+                        <p class="label">Recurring Revenue</p>
+                        <h2 class="mb-8">Whitening Smile Box</h2>
+                        <div class="mb-8">
+                            <span style="font-size: 4rem; font-weight: 300; color: var(--coral);">$20</span>
+                            <span class="text-muted">/delivery</span>
+                        </div>
+                        <p class="text-muted text-lg mb-8">Never run out of whitening essentials. 2 teeth whitening pens delivered every other month, right to the customer's door.</p>
+                        <ul class="check-list">
+                            <li><div class="brand-number" style="width: 40px; height: 40px;"><span class="highlight">✓</span></div> 2 whitening pens per delivery</li>
+                            <li><div class="brand-number" style="width: 40px; height: 40px;"><span class="highlight">✓</span></div> Ships every 2 months</li>
+                            <li><div class="brand-number" style="width: 40px; height: 40px;"><span class="highlight">✓</span></div> Free gift with subscription</li>
+                            <li><div class="brand-number" style="width: 40px; height: 40px;"><span class="highlight">✓</span></div> Cancel anytime</li>
+                        </ul>
+                    </div>
+                    <div class="product-image" style="max-width: 400px; margin: 0 auto; border-radius: 24px;">
+                        <img src="https://biancabright.com/cdn/shop/files/Bianca_Bright_18ec6e25-db22-4346-9c67-587331d72c02.jpg?v=1770109064" alt="Smile Box">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Pricing -->
+        <div class="slide" data-slide="11">
+            <div class="slide-content text-center">
+                <p class="label">Partnership</p>
+                <h2 class="mb-4">Wholesale Pricing</h2>
+                <p class="text-muted mb-12">40% margin across all products</p>
+                <div style="overflow-x: auto;">
+                    <table class="pricing-table" style="max-width: 900px; margin: 0 auto;">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>MSRP</th>
+                                <th>Wholesale</th>
+                                <th>Margin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Advanced Whitening Pen</td><td>$19.00</td><td>$11.40</td><td>40%</td></tr>
+                            <tr><td>Pure Whitening Pen</td><td>$19.97</td><td>$11.98</td><td>40%</td></tr>
+                            <tr><td>Max Whitening Gel</td><td>$29.00</td><td>$17.40</td><td>40%</td></tr>
+                            <tr><td>Essentials Kit (Wired LED)</td><td>$59.00</td><td>$35.40</td><td>40%</td></tr>
+                            <tr><td>Electric LED Toothbrush</td><td>$79.00</td><td>$47.40</td><td>40%</td></tr>
+                            <tr><td>Oscillating Toothbrush</td><td>$97.00</td><td>$58.20</td><td>40%</td></tr>
+                            <tr><td>Pro Whitening Kit Wireless</td><td>$110.00</td><td>$66.00</td><td>40%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="grid-2" style="max-width: 700px; margin: 32px auto 0; gap: 24px;">
+                    <div class="info-box">
+                        <p class="info-box-label">Minimum Order</p>
+                        <p class="info-box-value">Flexible</p>
+                        <p class="info-box-desc">Terms negotiable for launch partners</p>
+                    </div>
+                    <div class="info-box">
+                        <p class="info-box-label">Marketing Support</p>
+                        <p class="info-box-value">Included</p>
+                        <p class="info-box-desc">POS materials, training, co-op advertising</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Press -->
+        <div class="slide slide-gradient" data-slide="12">
+            <div class="slide-content text-center">
+                <p class="label">Recognition</p>
+                <h2 class="mb-12">Featured In</h2>
+                <div class="press-logos">
+                    <span class="press-logo">BYRDIE</span>
+                    <span class="press-logo">allure</span>
+                    <span class="press-logo">ELLE</span>
+                    <span class="press-logo">Health</span>
+                    <span class="press-logo">Prevention</span>
+                    <span class="press-logo">Us</span>
+                </div>
+                <div class="grid-3" style="max-width: 900px; margin: 0 auto;">
+                    <div class="card">
+                        <p class="text-muted italic mb-4">"The 8 Best Teeth Whitening Products"</p>
+                        <p class="highlight text-sm">— Byrdie</p>
+                    </div>
+                    <div class="card">
+                        <p class="text-muted italic mb-4">"17 Ways to Brighten Your Smile"</p>
+                        <p class="highlight text-sm">— Allure</p>
+                    </div>
+                    <div class="card">
+                        <p class="text-muted italic mb-4">"Best Whitening Products for Sensitive Teeth"</p>
+                        <p class="highlight text-sm">— Health</p>
+                    </div>
+                </div>
+                <p class="text-muted mt-12">Trusted by 50,000+ customers worldwide</p>
+            </div>
+        </div>
+
+        <!-- Slide 14: Contact -->
+        <div class="slide" data-slide="13">
+            <div class="slide-content text-center" style="max-width: 700px;">
+                <img src="../bianca-logos/Logo bianca1.png" alt="bianca" style="max-width: 200px; margin-bottom: 32px;">
+                <h2 class="mb-8">Let's Partner</h2>
+                <p class="text-muted text-xl mb-12">We're excited about the opportunity to bring bianca to your customers.</p>
+                <div class="contact-card">
+                    <p class="label">Sales Contacts</p>
+                    <div class="contact-grid">
+                        <div>
+                            <p class="contact-name">Laura Frends</p>
+                            <p class="contact-phone">678.858.1000</p>
+                        </div>
+                        <div>
+                            <p class="contact-name">Geraldine Troxel</p>
+                            <p class="contact-phone">206.457.9334</p>
+                            <p class="contact-email">troxelg@icloud.com</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="coral italic text-lg mt-12">A smile can make someone's day!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const PASSWORD = 'bianca';
+        const totalSlides = 14;
+        let currentSlide = 0;
+
+        // Elements
+        const passwordScreen = document.getElementById('passwordScreen');
+        const presentation = document.getElementById('presentation');
+        const passwordForm = document.getElementById('passwordForm');
+        const passwordInput = document.getElementById('passwordInput');
+        const passwordError = document.getElementById('passwordError');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressFill = document.getElementById('progressFill');
+        const progressDots = document.getElementById('progressDots');
+        const slideCounter = document.getElementById('slideCounter');
+        const slides = document.querySelectorAll('.slide');
+
+        // Check session auth
+        if (sessionStorage.getItem('bianca-retail-auth') === 'true') {
+            showPresentation();
+        }
+
+        // Password form
+        passwordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (passwordInput.value.toLowerCase() === PASSWORD) {
+                sessionStorage.setItem('bianca-retail-auth', 'true');
+                showPresentation();
+            } else {
+                passwordInput.classList.add('error');
+                passwordError.classList.add('show');
+                setTimeout(() => {
+                    passwordInput.classList.remove('error');
+                    passwordError.classList.remove('show');
+                }, 2000);
+            }
+        });
+
+        function showPresentation() {
+            passwordScreen.style.display = 'none';
+            presentation.classList.add('active');
+            initDots();
+            updateSlide();
+        }
+
+        function initDots() {
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'progress-dot';
+                dot.addEventListener('click', () => goToSlide(i));
+                progressDots.appendChild(dot);
+            }
+        }
+
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+
+            // Update progress
+            progressFill.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+
+            // Update dots
+            document.querySelectorAll('.progress-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+
+            // Update counter
+            slideCounter.textContent = `${String(currentSlide + 1).padStart(2, '0')} / ${String(totalSlides).padStart(2, '0')}`;
+
+            // Update nav buttons
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+        }
+
+        function goToSlide(index) {
+            if (index >= 0 && index < totalSlides) {
+                currentSlide = index;
+                updateSlide();
+            }
+        }
+
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+
+        // Button clicks
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (presentation.classList.contains('active')) {
+                if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+                    e.preventDefault();
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft' || e.key === 'Backspace') {
+                    e.preventDefault();
+                    prevSlide();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
