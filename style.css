@@ -77,21 +77,40 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 32px;
 }
 
-.brand-links a {
-    color: #1a1a1a;
+.brand-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
-    font-size: 1.1rem;
-    padding: 12px 24px;
-    border: 1px solid #1a1a1a;
-    transition: all 0.2s ease;
+    transition: opacity 0.2s ease;
 }
 
-.brand-links a:hover {
-    background-color: #1a1a1a;
-    color: #fafafa;
+.brand-logo:hover {
+    opacity: 0.7;
+}
+
+.brand-logo img {
+    max-width: 200px;
+    max-height: 60px;
+    object-fit: contain;
+}
+
+.brand-text {
+    color: #1a1a1a;
+}
+
+.smile-logo {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+.smile-logo .accent {
+    color: #7DD87D;
 }
 
 footer {
