@@ -750,6 +750,105 @@
             font-style: italic;
             color: rgba(29,29,29,0.5);
         }
+
+        /* Collage layouts */
+        .collage {
+            display: grid;
+            gap: 12px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .collage img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .collage-hero {
+            grid-template-columns: 1.2fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            aspect-ratio: 1.3;
+        }
+
+        .collage-hero .collage-main {
+            grid-row: span 2;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .collage-hero .collage-side {
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .collage-trio {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1.2fr 1fr;
+            aspect-ratio: 1.1;
+        }
+
+        .collage-trio .collage-main {
+            grid-column: span 2;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .collage-trio .collage-side {
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .collage-quad {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            aspect-ratio: 1;
+        }
+
+        .collage-quad > div {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .collage-stack {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1.5fr 1fr 1fr;
+            aspect-ratio: 0.7;
+        }
+
+        .collage-stack > div {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .collage-wide {
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+            aspect-ratio: 2.5;
+        }
+
+        .collage-wide > div {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        @media (max-width: 700px) {
+            .collage-hero {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1.5fr 1fr 1fr;
+                aspect-ratio: 0.8;
+            }
+            .collage-hero .collage-main {
+                grid-row: span 1;
+            }
+            .collage-trio {
+                grid-template-columns: 1fr;
+                aspect-ratio: auto;
+            }
+            .collage-trio .collage-main {
+                grid-column: span 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -804,8 +903,16 @@
                         <p class="text-muted mb-8">After 20+ years innovating in the industry, our founder saw what others ignored: microplastics, toxic ingredients, harsh chemicals. She knew there was a better way.</p>
                         <p class="coral italic text-xl">You look super cute when you SMILE!</p>
                     </div>
-                    <div class="product-image" style="max-width: 500px; margin: 0 auto;">
-                        <img src="https://biancabright.com/cdn/shop/files/premiumteethwhiteningdevice_1_35ba8291-6269-49bb-a52e-8aa0dd2f0701.jpg?v=1770108855" alt="bianca Pro Whitening Kit">
+                    <div class="collage collage-hero" style="max-width: 550px; margin: 0 auto;">
+                        <div class="collage-main">
+                            <img src="3.png" alt="Beautiful smile">
+                        </div>
+                        <div class="collage-side">
+                            <img src="8.png" alt="Pro Whitening Kit">
+                        </div>
+                        <div class="collage-side">
+                            <img src="12.png" alt="Whitening pen in use">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -886,8 +993,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="product-image" style="max-width: 450px; margin: 0 auto;">
-                        <img src="https://biancabright.com/cdn/shop/files/Bianca_Bright_1.jpg?v=1767998743" alt="Confident smile">
+                    <div class="collage collage-trio" style="max-width: 480px; margin: 0 auto;">
+                        <div class="collage-main">
+                            <img src="3.png" alt="Confident smile">
+                        </div>
+                        <div class="collage-side">
+                            <img src="4.png" alt="Product lineup">
+                        </div>
+                        <div class="collage-side">
+                            <img src="11.png" alt="Max Whitening Gel">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -969,32 +1084,37 @@
             <div class="slide-content text-center">
                 <p class="label">Product Line</p>
                 <h2 class="mb-4">Complete Whitening Ecosystem</h2>
-                <p class="text-muted mb-12">Professional-grade solutions for every need</p>
+                <p class="text-muted mb-8">Professional-grade solutions for every need</p>
+                <div class="collage collage-wide mb-12" style="max-width: 900px; margin: 0 auto 48px;">
+                    <div><img src="3.png" alt="Beautiful smile"></div>
+                    <div><img src="4.png" alt="Product lineup"></div>
+                    <div><img src="5.png" alt="Lifestyle"></div>
+                </div>
                 <div class="grid-4">
                     <div>
                         <div class="product-image mb-4" style="border: 1px solid rgba(255,166,128,0.2);">
-                            <img src="https://biancabright.com/cdn/shop/files/Bianca_Bright_1.jpg?v=1767998743" alt="Whitening Pens">
+                            <img src="12.png" alt="Whitening Pens">
                         </div>
                         <h4>Whitening Pens</h4>
                         <p class="coral">From $19</p>
                     </div>
                     <div>
                         <div class="product-image mb-4" style="border: 1px solid rgba(255,166,128,0.2);">
-                            <img src="https://biancabright.com/cdn/shop/files/BiancaBright_11_0e518467-d962-45c8-990d-0b6a602cbd08.jpg?v=1770108465" alt="LED Kits">
+                            <img src="8.png" alt="LED Kits">
                         </div>
                         <h4>LED Kits</h4>
                         <p class="coral">From $59</p>
                     </div>
                     <div>
                         <div class="product-image mb-4" style="border: 1px solid rgba(255,166,128,0.2);">
-                            <img src="https://biancabright.com/cdn/shop/files/BiancaBright_9_097d1451-665c-428b-b326-94111f3c2049.jpg?v=1770108281" alt="Oral Care">
+                            <img src="9.png" alt="Oral Care">
                         </div>
                         <h4>Oral Care</h4>
                         <p class="coral">From $79</p>
                     </div>
                     <div>
                         <div class="product-image mb-4" style="border: 1px solid rgba(255,166,128,0.2);">
-                            <img src="max-whitening-gel.png" alt="Gels & Serums">
+                            <img src="model-gel.png" alt="Gels & Serums">
                         </div>
                         <h4>Gels & Serums</h4>
                         <p class="coral">$29</p>
@@ -1007,8 +1127,16 @@
         <div class="slide" data-slide="7">
             <div class="slide-content">
                 <div class="grid-2">
-                    <div class="product-image" style="max-width: 450px;">
-                        <img src="https://biancabright.com/cdn/shop/files/Bianca_Bright_1.jpg?v=1767998743" alt="Whitening Pen">
+                    <div class="collage collage-hero" style="max-width: 480px;">
+                        <div class="collage-main">
+                            <img src="3.png" alt="Beautiful smile">
+                        </div>
+                        <div class="collage-side">
+                            <img src="12.png" alt="Whitening pen in hands">
+                        </div>
+                        <div class="collage-side">
+                            <img src="https://biancabright.com/cdn/shop/files/Bianca_Bright_1.jpg?v=1767998743" alt="Whitening Pen">
+                        </div>
                     </div>
                     <div>
                         <p class="label">Best Seller</p>
@@ -1056,7 +1184,7 @@
                 <div class="grid-2" style="max-width: 1000px; margin: 0 auto;">
                     <div class="led-card">
                         <div class="led-card-image">
-                            <img src="https://biancabright.com/cdn/shop/files/BiancaBright_11_0e518467-d962-45c8-990d-0b6a602cbd08.jpg?v=1770108465" alt="Essentials Kit">
+                            <img src="4.png" alt="Essentials Kit">
                         </div>
                         <div class="led-card-body">
                             <div class="led-card-header">
@@ -1076,7 +1204,7 @@
                     <div class="led-card featured" style="position: relative;">
                         <div class="led-card-badge">Best Seller</div>
                         <div class="led-card-image">
-                            <img src="https://biancabright.com/cdn/shop/files/premiumteethwhiteningdevice_1_35ba8291-6269-49bb-a52e-8aa0dd2f0701.jpg?v=1770108855" alt="Pro Wireless Kit">
+                            <img src="8.png" alt="Pro Wireless Kit">
                         </div>
                         <div class="led-card-body">
                             <div class="led-card-header">
@@ -1105,7 +1233,7 @@
                 <div class="grid-3">
                     <div class="led-card">
                         <div class="product-image">
-                            <img src="https://biancabright.com/cdn/shop/files/BiancaBright_9_097d1451-665c-428b-b326-94111f3c2049.jpg?v=1770108281" alt="Electric Toothbrush">
+                            <img src="5.png" alt="Electric Toothbrush">
                         </div>
                         <div class="led-card-body" style="border-top: 1px solid var(--cream);">
                             <div class="led-card-header">
@@ -1118,7 +1246,7 @@
                     </div>
                     <div class="led-card">
                         <div class="product-image">
-                            <img src="https://biancabright.com/cdn/shop/files/BiancaBright_7e1f28ab-4182-4bac-a070-d538b35ca351.jpg?v=1770108702" alt="Oscillating Toothbrush">
+                            <img src="7.png" alt="Oscillating Toothbrush">
                         </div>
                         <div class="led-card-body" style="border-top: 1px solid var(--cream);">
                             <div class="led-card-header">
@@ -1131,7 +1259,7 @@
                     </div>
                     <div class="led-card">
                         <div class="product-image">
-                            <img src="max-whitening-gel.png" alt="Max Whitening Gel">
+                            <img src="model-gel.png" alt="Max Whitening Gel">
                         </div>
                         <div class="led-card-body" style="border-top: 1px solid var(--cream);">
                             <div class="led-card-header">
@@ -1165,8 +1293,16 @@
                             <li><div class="brand-number" style="width: 40px; height: 40px;"><span class="highlight">✓</span></div> Cancel anytime</li>
                         </ul>
                     </div>
-                    <div class="product-image" style="max-width: 400px; margin: 0 auto; border-radius: 24px;">
-                        <img src="https://biancabright.com/cdn/shop/files/Bianca_Bright_18ec6e25-db22-4346-9c67-587331d72c02.jpg?v=1770109064" alt="Smile Box">
+                    <div class="collage collage-trio" style="max-width: 420px; margin: 0 auto;">
+                        <div class="collage-main">
+                            <img src="3.png" alt="Beautiful smile">
+                        </div>
+                        <div class="collage-side">
+                            <img src="12.png" alt="Whitening pens">
+                        </div>
+                        <div class="collage-side">
+                            <img src="https://biancabright.com/cdn/shop/files/Bianca_Bright_18ec6e25-db22-4346-9c67-587331d72c02.jpg?v=1770109064" alt="Smile Box">
+                        </div>
                     </div>
                 </div>
             </div>
