@@ -80,13 +80,8 @@
             transition: border-color 0.2s;
         }
 
-        .password-input:focus {
-            border-color: var(--brown);
-        }
-
-        .password-input.error {
-            border-color: var(--danger);
-        }
+        .password-input:focus { border-color: var(--brown); }
+        .password-input.error { border-color: var(--danger); }
 
         .password-error {
             color: var(--danger);
@@ -95,9 +90,7 @@
             display: none;
         }
 
-        .password-error.show {
-            display: block;
-        }
+        .password-error.show { display: block; }
 
         .password-button {
             width: 100%;
@@ -113,19 +106,11 @@
             transition: background 0.2s;
         }
 
-        .password-button:hover {
-            background: var(--charcoal);
-        }
+        .password-button:hover { background: var(--charcoal); }
 
         /* Dashboard */
-        .dashboard {
-            display: none;
-            min-height: 100vh;
-        }
-
-        .dashboard.active {
-            display: block;
-        }
+        .dashboard { display: none; min-height: 100vh; }
+        .dashboard.active { display: block; }
 
         /* Header */
         .header {
@@ -170,7 +155,7 @@
             padding: 20px;
         }
 
-        /* Meeting Timer */
+        /* Timer */
         .timer-bar {
             background: #fff;
             border-radius: 16px;
@@ -182,25 +167,9 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
-        .timer-section {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .timer-label {
-            font-size: 0.8rem;
-            color: rgba(61,61,61,0.6);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .timer-value {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--brown);
-            font-variant-numeric: tabular-nums;
-        }
+        .timer-section { display: flex; align-items: center; gap: 12px; }
+        .timer-label { font-size: 0.8rem; color: rgba(61,61,61,0.6); text-transform: uppercase; letter-spacing: 0.05em; }
+        .timer-value { font-size: 1.5rem; font-weight: 600; color: var(--brown); font-variant-numeric: tabular-nums; }
 
         .timer-btn {
             padding: 8px 16px;
@@ -212,21 +181,9 @@
             transition: all 0.2s;
         }
 
-        .timer-btn.start {
-            background: var(--success);
-            color: #fff;
-        }
-
-        .timer-btn.pause {
-            background: var(--warning);
-            color: #fff;
-        }
-
-        .timer-btn.reset {
-            background: transparent;
-            color: var(--charcoal);
-            border: 1px solid rgba(61,61,61,0.2);
-        }
+        .timer-btn.start { background: var(--success); color: #fff; }
+        .timer-btn.pause { background: var(--warning); color: #fff; }
+        .timer-btn.reset { background: transparent; color: var(--charcoal); border: 1px solid rgba(61,61,61,0.2); }
 
         /* Section Cards */
         .section {
@@ -247,15 +204,8 @@
             transition: background 0.2s;
         }
 
-        .section-header:hover {
-            background: rgba(139,115,85,0.03);
-        }
-
-        .section-header-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .section-header:hover { background: rgba(139,115,85,0.03); }
+        .section-header-left { display: flex; align-items: center; gap: 12px; }
 
         .section-icon {
             width: 36px;
@@ -274,15 +224,8 @@
         .section-icon.ids { background: rgba(229,62,62,0.15); }
         .section-icon.todos { background: rgba(128,90,213,0.15); }
 
-        .section-title {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .section-time {
-            font-size: 0.75rem;
-            color: rgba(61,61,61,0.5);
-        }
+        .section-title { font-weight: 600; font-size: 1rem; }
+        .section-time { font-size: 0.75rem; color: rgba(61,61,61,0.5); }
 
         .section-toggle {
             width: 24px;
@@ -294,9 +237,7 @@
             transition: transform 0.2s;
         }
 
-        .section.open .section-toggle {
-            transform: rotate(180deg);
-        }
+        .section.open .section-toggle { transform: rotate(180deg); }
 
         .section-content {
             display: none;
@@ -304,14 +245,10 @@
             border-top: 1px solid rgba(139,115,85,0.08);
         }
 
-        .section.open .section-content {
-            display: block;
-        }
+        .section.open .section-content { display: block; }
 
         /* Items List */
-        .items-list {
-            list-style: none;
-        }
+        .items-list { list-style: none; }
 
         .item {
             display: flex;
@@ -321,9 +258,7 @@
             border-bottom: 1px solid rgba(139,115,85,0.08);
         }
 
-        .item:last-child {
-            border-bottom: none;
-        }
+        .item:last-child { border-bottom: none; }
 
         .item-status {
             width: 20px;
@@ -336,29 +271,13 @@
             transition: all 0.2s;
         }
 
-        .item-status.on-track {
-            background: var(--success);
-            border-color: var(--success);
-        }
+        .item-status.on-track { background: var(--success); border-color: var(--success); }
+        .item-status.off-track { background: var(--danger); border-color: var(--danger); }
+        .item-status.done { background: var(--brown); border-color: var(--brown); }
 
-        .item-status.off-track {
-            background: var(--danger);
-            border-color: var(--danger);
-        }
-
-        .item-content {
-            flex: 1;
-        }
-
-        .item-title {
-            font-weight: 500;
-            margin-bottom: 2px;
-        }
-
-        .item-meta {
-            font-size: 0.8rem;
-            color: rgba(61,61,61,0.6);
-        }
+        .item-content { flex: 1; }
+        .item-title { font-weight: 500; margin-bottom: 2px; }
+        .item-meta { font-size: 0.8rem; color: rgba(61,61,61,0.6); }
 
         .item-owner {
             display: inline-block;
@@ -369,15 +288,22 @@
             font-weight: 500;
         }
 
-        .item-value {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--brown);
-        }
-
+        .item-value { font-size: 1.25rem; font-weight: 600; color: var(--brown); }
         .item-value.success { color: var(--success); }
         .item-value.warning { color: var(--warning); }
         .item-value.danger { color: var(--danger); }
+
+        .item-delete {
+            background: none;
+            border: none;
+            color: rgba(61,61,61,0.3);
+            cursor: pointer;
+            padding: 4px;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+
+        .item-delete:hover { color: var(--danger); }
 
         /* Add Item */
         .add-item {
@@ -393,78 +319,100 @@
             transition: all 0.2s;
         }
 
-        .add-item:hover {
+        .add-item:hover { border-color: var(--brown); color: var(--brown); }
+
+        /* Add Form */
+        .add-form {
+            display: none;
+            margin-top: 12px;
+            padding: 16px;
+            background: rgba(139,115,85,0.03);
+            border-radius: 12px;
+        }
+
+        .add-form.active { display: block; }
+
+        .add-form input, .add-form select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(139,115,85,0.2);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            background: #fff;
+            outline: none;
+        }
+
+        .add-form input:focus, .add-form select:focus {
             border-color: var(--brown);
-            color: var(--brown);
         }
 
-        /* Rating Section */
-        .rating-section {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .rating-title {
-            font-size: 0.9rem;
-            color: rgba(61,61,61,0.6);
-            margin-bottom: 16px;
-        }
-
-        .rating-buttons {
+        .add-form-row {
             display: flex;
-            justify-content: center;
-            gap: 8px;
+            gap: 10px;
         }
+
+        .add-form-row input, .add-form-row select {
+            flex: 1;
+        }
+
+        .add-form-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .add-form-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .add-form-btn.save { background: var(--brown); color: #fff; }
+        .add-form-btn.cancel { background: rgba(61,61,61,0.1); color: var(--charcoal); }
+
+        /* Rating */
+        .rating-section { text-align: center; padding: 20px; }
+        .rating-title { font-size: 0.9rem; color: rgba(61,61,61,0.6); margin-bottom: 16px; }
+        .rating-buttons { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
 
         .rating-btn {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             border: 2px solid rgba(139,115,85,0.2);
             background: #fff;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--charcoal);
             cursor: pointer;
             transition: all 0.2s;
         }
 
-        .rating-btn:hover {
-            border-color: var(--brown);
-        }
+        .rating-btn:hover { border-color: var(--brown); }
+        .rating-btn.selected { background: var(--brown); border-color: var(--brown); color: #fff; }
 
-        .rating-btn.selected {
-            background: var(--brown);
-            border-color: var(--brown);
-            color: #fff;
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 20px;
+            color: rgba(61,61,61,0.4);
+            font-size: 0.9rem;
         }
 
         /* Responsive */
         @media (max-width: 600px) {
-            .timer-bar {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
-
-            .timer-section {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .header-content {
-                flex-direction: column;
-                gap: 4px;
-                text-align: center;
-            }
-
-            .section-header {
-                padding: 14px 16px;
-            }
-
-            .section-content {
-                padding: 0 16px 16px;
-            }
+            .timer-bar { flex-direction: column; gap: 12px; text-align: center; }
+            .timer-section { width: 100%; justify-content: center; }
+            .header-content { flex-direction: column; gap: 4px; text-align: center; }
+            .section-header { padding: 14px 16px; }
+            .section-content { padding: 0 16px 16px; }
+            .add-form-row { flex-direction: column; gap: 0; }
+            .rating-btn { width: 36px; height: 36px; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -517,20 +465,22 @@
                         <div class="section-icon segue">🎉</div>
                         <div>
                             <div class="section-title">Segue</div>
-                            <div class="section-time">5 minutes — Good news, wins, gratitude</div>
+                            <div class="section-time">5 min — Good news & wins</div>
                         </div>
                     </div>
                     <div class="section-toggle">▼</div>
                 </div>
                 <div class="section-content">
-                    <ul class="items-list" id="segueList">
-                        <li class="item">
-                            <div class="item-content">
-                                <div class="item-title">Share personal and professional wins</div>
-                                <div class="item-meta">Go around the table — keep it brief and positive</div>
-                            </div>
-                        </li>
-                    </ul>
+                    <ul class="items-list" id="segueList"></ul>
+                    <div class="add-item" data-type="segue">+ Add Win</div>
+                    <div class="add-form" id="segueForm">
+                        <input type="text" placeholder="What's the good news?" id="segueText">
+                        <input type="text" placeholder="Who's sharing? (optional)" id="segueOwner">
+                        <div class="add-form-buttons">
+                            <button class="add-form-btn cancel" data-type="segue">Cancel</button>
+                            <button class="add-form-btn save" data-type="segue">Add</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -541,39 +491,26 @@
                         <div class="section-icon scorecard">📊</div>
                         <div>
                             <div class="section-title">Scorecard</div>
-                            <div class="section-time">5 minutes — Review key metrics</div>
+                            <div class="section-time">5 min — Key metrics</div>
                         </div>
                     </div>
                     <div class="section-toggle">▼</div>
                 </div>
                 <div class="section-content">
-                    <ul class="items-list" id="scorecardList">
-                        <li class="item">
-                            <div class="item-status on-track"></div>
-                            <div class="item-content">
-                                <div class="item-title">Weekly Revenue</div>
-                                <div class="item-meta"><span class="item-owner">Laura</span> Goal: $10,000</div>
-                            </div>
-                            <div class="item-value success">$12,450</div>
-                        </li>
-                        <li class="item">
-                            <div class="item-status off-track"></div>
-                            <div class="item-content">
-                                <div class="item-title">New Leads</div>
-                                <div class="item-meta"><span class="item-owner">Caleb</span> Goal: 50</div>
-                            </div>
-                            <div class="item-value danger">32</div>
-                        </li>
-                        <li class="item">
-                            <div class="item-status on-track"></div>
-                            <div class="item-content">
-                                <div class="item-title">Customer Satisfaction</div>
-                                <div class="item-meta"><span class="item-owner">Brent</span> Goal: 4.5+</div>
-                            </div>
-                            <div class="item-value success">4.8</div>
-                        </li>
-                    </ul>
-                    <div class="add-item">+ Add Metric</div>
+                    <ul class="items-list" id="scorecardList"></ul>
+                    <div class="add-item" data-type="scorecard">+ Add Metric</div>
+                    <div class="add-form" id="scorecardForm">
+                        <input type="text" placeholder="Metric name" id="scorecardText">
+                        <div class="add-form-row">
+                            <input type="text" placeholder="Goal" id="scorecardGoal">
+                            <input type="text" placeholder="Actual" id="scorecardActual">
+                        </div>
+                        <input type="text" placeholder="Owner" id="scorecardOwner">
+                        <div class="add-form-buttons">
+                            <button class="add-form-btn cancel" data-type="scorecard">Cancel</button>
+                            <button class="add-form-btn save" data-type="scorecard">Add</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -584,61 +521,51 @@
                         <div class="section-icon headlines">📰</div>
                         <div>
                             <div class="section-title">Headlines</div>
-                            <div class="section-time">5 minutes — Customer & employee news</div>
+                            <div class="section-time">5 min — Customer & team news</div>
                         </div>
                     </div>
                     <div class="section-toggle">▼</div>
                 </div>
                 <div class="section-content">
-                    <ul class="items-list" id="headlinesList">
-                        <li class="item">
-                            <div class="item-content">
-                                <div class="item-title">New wholesale partner signed — David's Bridal</div>
-                                <div class="item-meta"><span class="item-owner">Laura</span> Feb 6</div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="add-item">+ Add Headline</div>
+                    <ul class="items-list" id="headlinesList"></ul>
+                    <div class="add-item" data-type="headlines">+ Add Headline</div>
+                    <div class="add-form" id="headlinesForm">
+                        <input type="text" placeholder="What's the headline?" id="headlinesText">
+                        <input type="text" placeholder="Who's sharing?" id="headlinesOwner">
+                        <div class="add-form-buttons">
+                            <button class="add-form-btn cancel" data-type="headlines">Cancel</button>
+                            <button class="add-form-btn save" data-type="headlines">Add</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Rock Review -->
+            <!-- Rocks -->
             <div class="section" data-section="rocks">
                 <div class="section-header">
                     <div class="section-header-left">
                         <div class="section-icon rocks">🪨</div>
                         <div>
                             <div class="section-title">Rock Review</div>
-                            <div class="section-time">5 minutes — Q1 2026 priorities</div>
+                            <div class="section-time">5 min — Q1 priorities</div>
                         </div>
                     </div>
                     <div class="section-toggle">▼</div>
                 </div>
                 <div class="section-content">
-                    <ul class="items-list" id="rocksList">
-                        <li class="item">
-                            <div class="item-status on-track"></div>
-                            <div class="item-content">
-                                <div class="item-title">Launch Smile Aesthetics Pro website</div>
-                                <div class="item-meta"><span class="item-owner">Caleb</span> Due: Mar 31</div>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <div class="item-status on-track"></div>
-                            <div class="item-content">
-                                <div class="item-title">Onboard 10 new dental hygienist partners</div>
-                                <div class="item-meta"><span class="item-owner">Laura</span> Due: Mar 31</div>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <div class="item-status off-track"></div>
-                            <div class="item-content">
-                                <div class="item-title">Finalize Ulta submission package</div>
-                                <div class="item-meta"><span class="item-owner">Brent</span> Due: Feb 28</div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="add-item">+ Add Rock</div>
+                    <ul class="items-list" id="rocksList"></ul>
+                    <div class="add-item" data-type="rocks">+ Add Rock</div>
+                    <div class="add-form" id="rocksForm">
+                        <input type="text" placeholder="Rock description" id="rocksText">
+                        <div class="add-form-row">
+                            <input type="text" placeholder="Owner" id="rocksOwner">
+                            <input type="date" id="rocksDue">
+                        </div>
+                        <div class="add-form-buttons">
+                            <button class="add-form-btn cancel" data-type="rocks">Cancel</button>
+                            <button class="add-form-btn save" data-type="rocks">Add</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -649,27 +576,29 @@
                         <div class="section-icon ids">💬</div>
                         <div>
                             <div class="section-title">IDS</div>
-                            <div class="section-time">60 minutes — Identify, Discuss, Solve</div>
+                            <div class="section-time">60 min — Identify, Discuss, Solve</div>
                         </div>
                     </div>
                     <div class="section-toggle">▼</div>
                 </div>
                 <div class="section-content">
-                    <ul class="items-list" id="idsList">
-                        <li class="item">
-                            <div class="item-content">
-                                <div class="item-title">Need unbranded aligner impression kits</div>
-                                <div class="item-meta"><span class="item-owner">Laura</span> Priority: High</div>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <div class="item-content">
-                                <div class="item-title">Website colors need adjustment — remove black</div>
-                                <div class="item-meta"><span class="item-owner">Caleb</span> Priority: Medium</div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="add-item">+ Add Issue</div>
+                    <ul class="items-list" id="idsList"></ul>
+                    <div class="add-item" data-type="ids">+ Add Issue</div>
+                    <div class="add-form" id="idsForm">
+                        <input type="text" placeholder="What's the issue?" id="idsText">
+                        <div class="add-form-row">
+                            <input type="text" placeholder="Owner" id="idsOwner">
+                            <select id="idsPriority">
+                                <option value="High">High Priority</option>
+                                <option value="Medium" selected>Medium Priority</option>
+                                <option value="Low">Low Priority</option>
+                            </select>
+                        </div>
+                        <div class="add-form-buttons">
+                            <button class="add-form-btn cancel" data-type="ids">Cancel</button>
+                            <button class="add-form-btn save" data-type="ids">Add</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -680,40 +609,36 @@
                         <div class="section-icon todos">✅</div>
                         <div>
                             <div class="section-title">To-Dos</div>
-                            <div class="section-time">5 minutes — Action items from this meeting</div>
+                            <div class="section-time">5 min — Action items</div>
                         </div>
                     </div>
                     <div class="section-toggle">▼</div>
                 </div>
                 <div class="section-content">
-                    <ul class="items-list" id="todosList">
-                        <li class="item">
-                            <div class="item-status"></div>
-                            <div class="item-content">
-                                <div class="item-title">Buy domain for smileaesthetics.pro</div>
-                                <div class="item-meta"><span class="item-owner">Caleb</span> Due: Feb 7</div>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <div class="item-status"></div>
-                            <div class="item-content">
-                                <div class="item-title">Research aligner impression kit suppliers</div>
-                                <div class="item-meta"><span class="item-owner">Quill</span> Due: Feb 7</div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="add-item">+ Add To-Do</div>
+                    <ul class="items-list" id="todosList"></ul>
+                    <div class="add-item" data-type="todos">+ Add To-Do</div>
+                    <div class="add-form" id="todosForm">
+                        <input type="text" placeholder="What needs to be done?" id="todosText">
+                        <div class="add-form-row">
+                            <input type="text" placeholder="Owner" id="todosOwner">
+                            <input type="date" id="todosDue">
+                        </div>
+                        <div class="add-form-buttons">
+                            <button class="add-form-btn cancel" data-type="todos">Cancel</button>
+                            <button class="add-form-btn save" data-type="todos">Add</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Meeting Rating -->
+            <!-- Rating -->
             <div class="section" data-section="rating">
                 <div class="section-header">
                     <div class="section-header-left">
                         <div class="section-icon" style="background: rgba(139,115,85,0.15);">⭐</div>
                         <div>
                             <div class="section-title">Meeting Rating</div>
-                            <div class="section-time">1 minute — Rate today's meeting 1-10</div>
+                            <div class="section-time">1 min — Rate 1-10</div>
                         </div>
                     </div>
                     <div class="section-toggle">▼</div>
@@ -736,36 +661,179 @@
                     </div>
                 </div>
             </div>
-
         </main>
     </div>
 
     <script>
-        // Config
         const PASSWORD = 'frends';
+        const STORAGE_KEY = 'frendsco-l10-data';
 
-        // Elements
+        // Default data structure
+        const defaultData = {
+            segue: [],
+            scorecard: [],
+            headlines: [],
+            rocks: [],
+            ids: [],
+            todos: []
+        };
+
+        // Load data from localStorage
+        function loadData() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            return stored ? JSON.parse(stored) : defaultData;
+        }
+
+        // Save data to localStorage
+        function saveData(data) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        }
+
+        // Generate unique ID
+        function genId() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+
+        // Format date
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            const d = new Date(dateStr);
+            return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+
+        // Render items
+        function renderItems() {
+            const data = loadData();
+
+            // Segue
+            const segueList = document.getElementById('segueList');
+            segueList.innerHTML = data.segue.length ? data.segue.map(item => `
+                <li class="item" data-id="${item.id}">
+                    <div class="item-content">
+                        <div class="item-title">${item.text}</div>
+                        ${item.owner ? `<div class="item-meta"><span class="item-owner">${item.owner}</span></div>` : ''}
+                    </div>
+                    <button class="item-delete" data-type="segue" data-id="${item.id}">×</button>
+                </li>
+            `).join('') : '<li class="empty-state">No wins shared yet</li>';
+
+            // Scorecard
+            const scorecardList = document.getElementById('scorecardList');
+            scorecardList.innerHTML = data.scorecard.length ? data.scorecard.map(item => {
+                const isOnTrack = parseFloat(item.actual) >= parseFloat(item.goal);
+                return `
+                <li class="item" data-id="${item.id}">
+                    <div class="item-status ${item.status || (isOnTrack ? 'on-track' : 'off-track')}" data-type="scorecard" data-id="${item.id}"></div>
+                    <div class="item-content">
+                        <div class="item-title">${item.text}</div>
+                        <div class="item-meta"><span class="item-owner">${item.owner}</span> Goal: ${item.goal}</div>
+                    </div>
+                    <div class="item-value ${isOnTrack ? 'success' : 'danger'}">${item.actual}</div>
+                    <button class="item-delete" data-type="scorecard" data-id="${item.id}">×</button>
+                </li>
+            `}).join('') : '<li class="empty-state">No metrics added</li>';
+
+            // Headlines
+            const headlinesList = document.getElementById('headlinesList');
+            headlinesList.innerHTML = data.headlines.length ? data.headlines.map(item => `
+                <li class="item" data-id="${item.id}">
+                    <div class="item-content">
+                        <div class="item-title">${item.text}</div>
+                        <div class="item-meta"><span class="item-owner">${item.owner}</span></div>
+                    </div>
+                    <button class="item-delete" data-type="headlines" data-id="${item.id}">×</button>
+                </li>
+            `).join('') : '<li class="empty-state">No headlines yet</li>';
+
+            // Rocks
+            const rocksList = document.getElementById('rocksList');
+            rocksList.innerHTML = data.rocks.length ? data.rocks.map(item => `
+                <li class="item" data-id="${item.id}">
+                    <div class="item-status ${item.status || ''}" data-type="rocks" data-id="${item.id}"></div>
+                    <div class="item-content">
+                        <div class="item-title">${item.text}</div>
+                        <div class="item-meta"><span class="item-owner">${item.owner}</span> ${item.due ? `Due: ${formatDate(item.due)}` : ''}</div>
+                    </div>
+                    <button class="item-delete" data-type="rocks" data-id="${item.id}">×</button>
+                </li>
+            `).join('') : '<li class="empty-state">No rocks defined</li>';
+
+            // IDS
+            const idsList = document.getElementById('idsList');
+            idsList.innerHTML = data.ids.length ? data.ids.map(item => `
+                <li class="item" data-id="${item.id}">
+                    <div class="item-content">
+                        <div class="item-title">${item.text}</div>
+                        <div class="item-meta"><span class="item-owner">${item.owner}</span> Priority: ${item.priority}</div>
+                    </div>
+                    <button class="item-delete" data-type="ids" data-id="${item.id}">×</button>
+                </li>
+            `).join('') : '<li class="empty-state">No issues to discuss</li>';
+
+            // To-Dos
+            const todosList = document.getElementById('todosList');
+            todosList.innerHTML = data.todos.length ? data.todos.map(item => `
+                <li class="item" data-id="${item.id}">
+                    <div class="item-status ${item.status || ''}" data-type="todos" data-id="${item.id}"></div>
+                    <div class="item-content">
+                        <div class="item-title">${item.text}</div>
+                        <div class="item-meta"><span class="item-owner">${item.owner}</span> ${item.due ? `Due: ${formatDate(item.due)}` : ''}</div>
+                    </div>
+                    <button class="item-delete" data-type="todos" data-id="${item.id}">×</button>
+                </li>
+            `).join('') : '<li class="empty-state">No to-dos yet</li>';
+
+            // Re-attach event listeners
+            attachItemListeners();
+        }
+
+        function attachItemListeners() {
+            // Delete buttons
+            document.querySelectorAll('.item-delete').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const type = btn.dataset.type;
+                    const id = btn.dataset.id;
+                    const data = loadData();
+                    data[type] = data[type].filter(item => item.id !== id);
+                    saveData(data);
+                    renderItems();
+                });
+            });
+
+            // Status toggles
+            document.querySelectorAll('.item-status').forEach(status => {
+                status.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const type = status.dataset.type;
+                    const id = status.dataset.id;
+                    if (!type || !id) return;
+                    
+                    const data = loadData();
+                    const item = data[type].find(i => i.id === id);
+                    if (item) {
+                        if (item.status === 'on-track') item.status = 'off-track';
+                        else if (item.status === 'off-track') item.status = 'done';
+                        else if (item.status === 'done') item.status = '';
+                        else item.status = 'on-track';
+                        saveData(data);
+                        renderItems();
+                    }
+                });
+            });
+        }
+
+        // Password handling
         const passwordScreen = document.getElementById('passwordScreen');
         const passwordForm = document.getElementById('passwordForm');
         const passwordInput = document.getElementById('passwordInput');
         const passwordError = document.getElementById('passwordError');
         const dashboard = document.getElementById('dashboard');
-        const meetingDate = document.getElementById('meetingDate');
-        const timerDisplay = document.getElementById('timerDisplay');
-        const timerStart = document.getElementById('timerStart');
-        const timerReset = document.getElementById('timerReset');
 
-        // Timer state
-        let timerSeconds = 0;
-        let timerInterval = null;
-        let timerRunning = false;
-
-        // Check session auth
         if (sessionStorage.getItem('frendsco-l10-auth') === 'true') {
             showDashboard();
         }
 
-        // Password form
         passwordForm.addEventListener('submit', (e) => {
             e.preventDefault();
             if (passwordInput.value.toLowerCase() === PASSWORD) {
@@ -784,26 +852,15 @@
         function showDashboard() {
             passwordScreen.style.display = 'none';
             dashboard.classList.add('active');
-            updateDate();
+            document.getElementById('meetingDate').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            renderItems();
         }
 
-        function updateDate() {
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            meetingDate.textContent = now.toLocaleDateString('en-US', options);
-        }
-
-        // Timer functions
-        function formatTime(seconds) {
-            const mins = Math.floor(seconds / 60);
-            const secs = seconds % 60;
-            return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-        }
-
-        function updateTimer() {
-            timerSeconds++;
-            timerDisplay.textContent = formatTime(timerSeconds);
-        }
+        // Timer
+        let timerSeconds = 0, timerInterval = null, timerRunning = false;
+        const timerDisplay = document.getElementById('timerDisplay');
+        const timerStart = document.getElementById('timerStart');
+        const timerReset = document.getElementById('timerReset');
 
         timerStart.addEventListener('click', () => {
             if (timerRunning) {
@@ -812,7 +869,11 @@
                 timerStart.classList.remove('pause');
                 timerStart.classList.add('start');
             } else {
-                timerInterval = setInterval(updateTimer, 1000);
+                timerInterval = setInterval(() => {
+                    timerSeconds++;
+                    const m = Math.floor(timerSeconds / 60), s = timerSeconds % 60;
+                    timerDisplay.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+                }, 1000);
                 timerStart.textContent = 'Pause';
                 timerStart.classList.remove('start');
                 timerStart.classList.add('pause');
@@ -832,31 +893,79 @@
 
         // Section toggles
         document.querySelectorAll('.section-header').forEach(header => {
-            header.addEventListener('click', () => {
-                header.parentElement.classList.toggle('open');
+            header.addEventListener('click', () => header.parentElement.classList.toggle('open'));
+        });
+
+        // Add item forms
+        document.querySelectorAll('.add-item').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const type = btn.dataset.type;
+                document.getElementById(type + 'Form').classList.add('active');
+                btn.style.display = 'none';
             });
         });
 
-        // Rating buttons
+        document.querySelectorAll('.add-form-btn.cancel').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const type = btn.dataset.type;
+                document.getElementById(type + 'Form').classList.remove('active');
+                document.querySelector(`.add-item[data-type="${type}"]`).style.display = 'flex';
+            });
+        });
+
+        document.querySelectorAll('.add-form-btn.save').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const type = btn.dataset.type;
+                const data = loadData();
+                let newItem = { id: genId() };
+
+                if (type === 'segue') {
+                    newItem.text = document.getElementById('segueText').value;
+                    newItem.owner = document.getElementById('segueOwner').value;
+                } else if (type === 'scorecard') {
+                    newItem.text = document.getElementById('scorecardText').value;
+                    newItem.goal = document.getElementById('scorecardGoal').value;
+                    newItem.actual = document.getElementById('scorecardActual').value;
+                    newItem.owner = document.getElementById('scorecardOwner').value;
+                } else if (type === 'headlines') {
+                    newItem.text = document.getElementById('headlinesText').value;
+                    newItem.owner = document.getElementById('headlinesOwner').value;
+                } else if (type === 'rocks') {
+                    newItem.text = document.getElementById('rocksText').value;
+                    newItem.owner = document.getElementById('rocksOwner').value;
+                    newItem.due = document.getElementById('rocksDue').value;
+                } else if (type === 'ids') {
+                    newItem.text = document.getElementById('idsText').value;
+                    newItem.owner = document.getElementById('idsOwner').value;
+                    newItem.priority = document.getElementById('idsPriority').value;
+                } else if (type === 'todos') {
+                    newItem.text = document.getElementById('todosText').value;
+                    newItem.owner = document.getElementById('todosOwner').value;
+                    newItem.due = document.getElementById('todosDue').value;
+                }
+
+                if (newItem.text) {
+                    data[type].push(newItem);
+                    saveData(data);
+                    renderItems();
+                }
+
+                // Reset form
+                document.getElementById(type + 'Form').classList.remove('active');
+                document.querySelector(`.add-item[data-type="${type}"]`).style.display = 'flex';
+                document.getElementById(type + 'Form').querySelectorAll('input, select').forEach(inp => {
+                    if (inp.type === 'date') inp.value = '';
+                    else if (inp.tagName === 'SELECT') inp.selectedIndex = 1;
+                    else inp.value = '';
+                });
+            });
+        });
+
+        // Rating
         document.querySelectorAll('.rating-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('selected'));
                 btn.classList.add('selected');
-            });
-        });
-
-        // Status toggle (on-track / off-track)
-        document.querySelectorAll('.item-status').forEach(status => {
-            status.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (status.classList.contains('on-track')) {
-                    status.classList.remove('on-track');
-                    status.classList.add('off-track');
-                } else if (status.classList.contains('off-track')) {
-                    status.classList.remove('off-track');
-                } else {
-                    status.classList.add('on-track');
-                }
             });
         });
     </script>
