@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>FrendsCo L10 - Leadership Meeting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --cream: #FAF8F5;
+            --brown: #8b7355;
+            --brown-light: #c9b99a;
+            --charcoal: #3d3d3d;
+            --success: #48bb78;
+            --warning: #ed8936;
+            --danger: #e53e3e;
+            --info: #4299e1;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Password Screen */
+        .password-screen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .password-container {
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .password-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--brown);
+            margin-bottom: 8px;
+        }
+
+        .password-title {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+            color: var(--charcoal);
+        }
+
+        .password-subtitle {
+            color: rgba(61,61,61,0.6);
+            margin-bottom: 32px;
+            font-size: 0.9rem;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 16px 24px;
+            border: 2px solid var(--brown-light);
+            border-radius: 12px;
+            font-size: 1rem;
+            text-align: center;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            outline: none;
+            background: #fff;
+            transition: border-color 0.2s;
+        }
+
+        .password-input:focus {
+            border-color: var(--brown);
+        }
+
+        .password-input.error {
+            border-color: var(--danger);
+        }
+
+        .password-error {
+            color: var(--danger);
+            font-size: 0.875rem;
+            margin-top: 12px;
+            display: none;
+        }
+
+        .password-error.show {
+            display: block;
+        }
+
+        .password-button {
+            width: 100%;
+            margin-top: 24px;
+            padding: 16px;
+            background: var(--brown);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .password-button:hover {
+            background: var(--charcoal);
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .dashboard.active {
+            display: block;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            border-bottom: 1px solid rgba(139,115,85,0.15);
+            padding: 16px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--brown);
+        }
+
+        .header-title {
+            font-size: 0.875rem;
+            color: rgba(61,61,61,0.6);
+        }
+
+        .header-date {
+            font-size: 0.8rem;
+            color: var(--brown);
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Meeting Timer */
+        .timer-bar {
+            background: #fff;
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .timer-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .timer-label {
+            font-size: 0.8rem;
+            color: rgba(61,61,61,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timer-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--brown);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .timer-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .timer-btn.start {
+            background: var(--success);
+            color: #fff;
+        }
+
+        .timer-btn.pause {
+            background: var(--warning);
+            color: #fff;
+        }
+
+        .timer-btn.reset {
+            background: transparent;
+            color: var(--charcoal);
+            border: 1px solid rgba(61,61,61,0.2);
+        }
+
+        /* Section Cards */
+        .section {
+            background: #fff;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+        }
+
+        .section-header:hover {
+            background: rgba(139,115,85,0.03);
+        }
+
+        .section-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .section-icon.segue { background: rgba(72,187,120,0.15); }
+        .section-icon.scorecard { background: rgba(66,153,225,0.15); }
+        .section-icon.headlines { background: rgba(237,137,54,0.15); }
+        .section-icon.rocks { background: rgba(139,115,85,0.15); }
+        .section-icon.ids { background: rgba(229,62,62,0.15); }
+        .section-icon.todos { background: rgba(128,90,213,0.15); }
+
+        .section-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .section-time {
+            font-size: 0.75rem;
+            color: rgba(61,61,61,0.5);
+        }
+
+        .section-toggle {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(61,61,61,0.4);
+            transition: transform 0.2s;
+        }
+
+        .section.open .section-toggle {
+            transform: rotate(180deg);
+        }
+
+        .section-content {
+            display: none;
+            padding: 0 20px 20px;
+            border-top: 1px solid rgba(139,115,85,0.08);
+        }
+
+        .section.open .section-content {
+            display: block;
+        }
+
+        /* Items List */
+        .items-list {
+            list-style: none;
+        }
+
+        .item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(139,115,85,0.08);
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        .item-status {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--brown-light);
+            flex-shrink: 0;
+            margin-top: 2px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .item-status.on-track {
+            background: var(--success);
+            border-color: var(--success);
+        }
+
+        .item-status.off-track {
+            background: var(--danger);
+            border-color: var(--danger);
+        }
+
+        .item-content {
+            flex: 1;
+        }
+
+        .item-title {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .item-meta {
+            font-size: 0.8rem;
+            color: rgba(61,61,61,0.6);
+        }
+
+        .item-owner {
+            display: inline-block;
+            background: rgba(139,115,85,0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .item-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--brown);
+        }
+
+        .item-value.success { color: var(--success); }
+        .item-value.warning { color: var(--warning); }
+        .item-value.danger { color: var(--danger); }
+
+        /* Add Item */
+        .add-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+            margin-top: 12px;
+            border: 2px dashed rgba(139,115,85,0.2);
+            border-radius: 8px;
+            color: rgba(61,61,61,0.5);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .add-item:hover {
+            border-color: var(--brown);
+            color: var(--brown);
+        }
+
+        /* Rating Section */
+        .rating-section {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .rating-title {
+            font-size: 0.9rem;
+            color: rgba(61,61,61,0.6);
+            margin-bottom: 16px;
+        }
+
+        .rating-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .rating-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid rgba(139,115,85,0.2);
+            background: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .rating-btn:hover {
+            border-color: var(--brown);
+        }
+
+        .rating-btn.selected {
+            background: var(--brown);
+            border-color: var(--brown);
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .timer-bar {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .timer-section {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 4px;
+                text-align: center;
+            }
+
+            .section-header {
+                padding: 14px 16px;
+            }
+
+            .section-content {
+                padding: 0 16px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Password Screen -->
+    <div class="password-screen" id="passwordScreen">
+        <div class="password-container">
+            <div class="password-logo">FrendsCo</div>
+            <div class="password-title">L10 Leadership Meeting</div>
+            <div class="password-subtitle">Enter access code to continue</div>
+            <form id="passwordForm">
+                <input type="password" class="password-input" id="passwordInput" placeholder="Access Code" autocomplete="off">
+                <div class="password-error" id="passwordError">Invalid access code</div>
+                <button type="submit" class="password-button">Enter</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <header class="header">
+            <div class="header-content">
+                <div>
+                    <div class="header-brand">FrendsCo</div>
+                    <div class="header-title">L10 Leadership Meeting</div>
+                </div>
+                <div class="header-date" id="meetingDate"></div>
+            </div>
+        </header>
+
+        <main class="main">
+            <!-- Timer -->
+            <div class="timer-bar">
+                <div class="timer-section">
+                    <div>
+                        <div class="timer-label">Meeting Time</div>
+                        <div class="timer-value" id="timerDisplay">00:00</div>
+                    </div>
+                </div>
+                <div class="timer-section">
+                    <button class="timer-btn start" id="timerStart">Start</button>
+                    <button class="timer-btn reset" id="timerReset">Reset</button>
+                </div>
+            </div>
+
+            <!-- Segue -->
+            <div class="section open" data-section="segue">
+                <div class="section-header">
+                    <div class="section-header-left">
+                        <div class="section-icon segue">🎉</div>
+                        <div>
+                            <div class="section-title">Segue</div>
+                            <div class="section-time">5 minutes — Good news, wins, gratitude</div>
+                        </div>
+                    </div>
+                    <div class="section-toggle">▼</div>
+                </div>
+                <div class="section-content">
+                    <ul class="items-list" id="segueList">
+                        <li class="item">
+                            <div class="item-content">
+                                <div class="item-title">Share personal and professional wins</div>
+                                <div class="item-meta">Go around the table — keep it brief and positive</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Scorecard -->
+            <div class="section" data-section="scorecard">
+                <div class="section-header">
+                    <div class="section-header-left">
+                        <div class="section-icon scorecard">📊</div>
+                        <div>
+                            <div class="section-title">Scorecard</div>
+                            <div class="section-time">5 minutes — Review key metrics</div>
+                        </div>
+                    </div>
+                    <div class="section-toggle">▼</div>
+                </div>
+                <div class="section-content">
+                    <ul class="items-list" id="scorecardList">
+                        <li class="item">
+                            <div class="item-status on-track"></div>
+                            <div class="item-content">
+                                <div class="item-title">Weekly Revenue</div>
+                                <div class="item-meta"><span class="item-owner">Laura</span> Goal: $10,000</div>
+                            </div>
+                            <div class="item-value success">$12,450</div>
+                        </li>
+                        <li class="item">
+                            <div class="item-status off-track"></div>
+                            <div class="item-content">
+                                <div class="item-title">New Leads</div>
+                                <div class="item-meta"><span class="item-owner">Caleb</span> Goal: 50</div>
+                            </div>
+                            <div class="item-value danger">32</div>
+                        </li>
+                        <li class="item">
+                            <div class="item-status on-track"></div>
+                            <div class="item-content">
+                                <div class="item-title">Customer Satisfaction</div>
+                                <div class="item-meta"><span class="item-owner">Brent</span> Goal: 4.5+</div>
+                            </div>
+                            <div class="item-value success">4.8</div>
+                        </li>
+                    </ul>
+                    <div class="add-item">+ Add Metric</div>
+                </div>
+            </div>
+
+            <!-- Headlines -->
+            <div class="section" data-section="headlines">
+                <div class="section-header">
+                    <div class="section-header-left">
+                        <div class="section-icon headlines">📰</div>
+                        <div>
+                            <div class="section-title">Headlines</div>
+                            <div class="section-time">5 minutes — Customer & employee news</div>
+                        </div>
+                    </div>
+                    <div class="section-toggle">▼</div>
+                </div>
+                <div class="section-content">
+                    <ul class="items-list" id="headlinesList">
+                        <li class="item">
+                            <div class="item-content">
+                                <div class="item-title">New wholesale partner signed — David's Bridal</div>
+                                <div class="item-meta"><span class="item-owner">Laura</span> Feb 6</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="add-item">+ Add Headline</div>
+                </div>
+            </div>
+
+            <!-- Rock Review -->
+            <div class="section" data-section="rocks">
+                <div class="section-header">
+                    <div class="section-header-left">
+                        <div class="section-icon rocks">🪨</div>
+                        <div>
+                            <div class="section-title">Rock Review</div>
+                            <div class="section-time">5 minutes — Q1 2026 priorities</div>
+                        </div>
+                    </div>
+                    <div class="section-toggle">▼</div>
+                </div>
+                <div class="section-content">
+                    <ul class="items-list" id="rocksList">
+                        <li class="item">
+                            <div class="item-status on-track"></div>
+                            <div class="item-content">
+                                <div class="item-title">Launch Smile Aesthetics Pro website</div>
+                                <div class="item-meta"><span class="item-owner">Caleb</span> Due: Mar 31</div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="item-status on-track"></div>
+                            <div class="item-content">
+                                <div class="item-title">Onboard 10 new dental hygienist partners</div>
+                                <div class="item-meta"><span class="item-owner">Laura</span> Due: Mar 31</div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="item-status off-track"></div>
+                            <div class="item-content">
+                                <div class="item-title">Finalize Ulta submission package</div>
+                                <div class="item-meta"><span class="item-owner">Brent</span> Due: Feb 28</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="add-item">+ Add Rock</div>
+                </div>
+            </div>
+
+            <!-- IDS -->
+            <div class="section" data-section="ids">
+                <div class="section-header">
+                    <div class="section-header-left">
+                        <div class="section-icon ids">💬</div>
+                        <div>
+                            <div class="section-title">IDS</div>
+                            <div class="section-time">60 minutes — Identify, Discuss, Solve</div>
+                        </div>
+                    </div>
+                    <div class="section-toggle">▼</div>
+                </div>
+                <div class="section-content">
+                    <ul class="items-list" id="idsList">
+                        <li class="item">
+                            <div class="item-content">
+                                <div class="item-title">Need unbranded aligner impression kits</div>
+                                <div class="item-meta"><span class="item-owner">Laura</span> Priority: High</div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="item-content">
+                                <div class="item-title">Website colors need adjustment — remove black</div>
+                                <div class="item-meta"><span class="item-owner">Caleb</span> Priority: Medium</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="add-item">+ Add Issue</div>
+                </div>
+            </div>
+
+            <!-- To-Dos -->
+            <div class="section" data-section="todos">
+                <div class="section-header">
+                    <div class="section-header-left">
+                        <div class="section-icon todos">✅</div>
+                        <div>
+                            <div class="section-title">To-Dos</div>
+                            <div class="section-time">5 minutes — Action items from this meeting</div>
+                        </div>
+                    </div>
+                    <div class="section-toggle">▼</div>
+                </div>
+                <div class="section-content">
+                    <ul class="items-list" id="todosList">
+                        <li class="item">
+                            <div class="item-status"></div>
+                            <div class="item-content">
+                                <div class="item-title">Buy domain for smileaesthetics.pro</div>
+                                <div class="item-meta"><span class="item-owner">Caleb</span> Due: Feb 7</div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="item-status"></div>
+                            <div class="item-content">
+                                <div class="item-title">Research aligner impression kit suppliers</div>
+                                <div class="item-meta"><span class="item-owner">Quill</span> Due: Feb 7</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="add-item">+ Add To-Do</div>
+                </div>
+            </div>
+
+            <!-- Meeting Rating -->
+            <div class="section" data-section="rating">
+                <div class="section-header">
+                    <div class="section-header-left">
+                        <div class="section-icon" style="background: rgba(139,115,85,0.15);">⭐</div>
+                        <div>
+                            <div class="section-title">Meeting Rating</div>
+                            <div class="section-time">1 minute — Rate today's meeting 1-10</div>
+                        </div>
+                    </div>
+                    <div class="section-toggle">▼</div>
+                </div>
+                <div class="section-content">
+                    <div class="rating-section">
+                        <div class="rating-title">How productive was this meeting?</div>
+                        <div class="rating-buttons">
+                            <button class="rating-btn">1</button>
+                            <button class="rating-btn">2</button>
+                            <button class="rating-btn">3</button>
+                            <button class="rating-btn">4</button>
+                            <button class="rating-btn">5</button>
+                            <button class="rating-btn">6</button>
+                            <button class="rating-btn">7</button>
+                            <button class="rating-btn">8</button>
+                            <button class="rating-btn">9</button>
+                            <button class="rating-btn">10</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // Config
+        const PASSWORD = 'frends';
+
+        // Elements
+        const passwordScreen = document.getElementById('passwordScreen');
+        const passwordForm = document.getElementById('passwordForm');
+        const passwordInput = document.getElementById('passwordInput');
+        const passwordError = document.getElementById('passwordError');
+        const dashboard = document.getElementById('dashboard');
+        const meetingDate = document.getElementById('meetingDate');
+        const timerDisplay = document.getElementById('timerDisplay');
+        const timerStart = document.getElementById('timerStart');
+        const timerReset = document.getElementById('timerReset');
+
+        // Timer state
+        let timerSeconds = 0;
+        let timerInterval = null;
+        let timerRunning = false;
+
+        // Check session auth
+        if (sessionStorage.getItem('frendsco-l10-auth') === 'true') {
+            showDashboard();
+        }
+
+        // Password form
+        passwordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (passwordInput.value.toLowerCase() === PASSWORD) {
+                sessionStorage.setItem('frendsco-l10-auth', 'true');
+                showDashboard();
+            } else {
+                passwordInput.classList.add('error');
+                passwordError.classList.add('show');
+                setTimeout(() => {
+                    passwordInput.classList.remove('error');
+                    passwordError.classList.remove('show');
+                }, 2000);
+            }
+        });
+
+        function showDashboard() {
+            passwordScreen.style.display = 'none';
+            dashboard.classList.add('active');
+            updateDate();
+        }
+
+        function updateDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            meetingDate.textContent = now.toLocaleDateString('en-US', options);
+        }
+
+        // Timer functions
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }
+
+        function updateTimer() {
+            timerSeconds++;
+            timerDisplay.textContent = formatTime(timerSeconds);
+        }
+
+        timerStart.addEventListener('click', () => {
+            if (timerRunning) {
+                clearInterval(timerInterval);
+                timerStart.textContent = 'Start';
+                timerStart.classList.remove('pause');
+                timerStart.classList.add('start');
+            } else {
+                timerInterval = setInterval(updateTimer, 1000);
+                timerStart.textContent = 'Pause';
+                timerStart.classList.remove('start');
+                timerStart.classList.add('pause');
+            }
+            timerRunning = !timerRunning;
+        });
+
+        timerReset.addEventListener('click', () => {
+            clearInterval(timerInterval);
+            timerSeconds = 0;
+            timerDisplay.textContent = '00:00';
+            timerStart.textContent = 'Start';
+            timerStart.classList.remove('pause');
+            timerStart.classList.add('start');
+            timerRunning = false;
+        });
+
+        // Section toggles
+        document.querySelectorAll('.section-header').forEach(header => {
+            header.addEventListener('click', () => {
+                header.parentElement.classList.toggle('open');
+            });
+        });
+
+        // Rating buttons
+        document.querySelectorAll('.rating-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+            });
+        });
+
+        // Status toggle (on-track / off-track)
+        document.querySelectorAll('.item-status').forEach(status => {
+            status.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (status.classList.contains('on-track')) {
+                    status.classList.remove('on-track');
+                    status.classList.add('off-track');
+                } else if (status.classList.contains('off-track')) {
+                    status.classList.remove('off-track');
+                } else {
+                    status.classList.add('on-track');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
